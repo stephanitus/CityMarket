@@ -11,7 +11,7 @@ class Business extends Component{
     };
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
      this.setState({ name: nextProps.name, summary: nextProps.summary, picloc: nextProps.picloc });
    }
 
