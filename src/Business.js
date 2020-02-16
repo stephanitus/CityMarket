@@ -11,6 +11,10 @@ class Business extends Component{
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+     this.setState({ name: nextProps.name, summary: nextProps.summary, picloc: nextProps.picloc });
+   }
+
   render(){
     return(
       <a href="index.html">
