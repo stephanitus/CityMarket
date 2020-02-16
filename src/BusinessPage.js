@@ -14,7 +14,7 @@ class BusinessPage extends Component{
         };
       }
 
-      
+
     render() {
         var comps = [];
         for (let i = 0; i < this.state.items.length; i++){
