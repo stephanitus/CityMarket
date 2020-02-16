@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Titlebar.css';
+import fire from './config/fire';
 
 class Titlebar extends Component{
   constructor(props){
@@ -23,6 +24,9 @@ class Titlebar extends Component{
     if(this.state.loggedin){
       return(
         <div>
+        <div className="account-container">
+          <button className="account-button" style={{margin: "0px 2px 20px 93px"}} onClick={this.props.logout} href="#root"><a>Sign Out</a></button>
+        </div>
           <div className="title">
             <div className="wrapper">
               <h4><a onClick={()=>{this.formChange("businesses")}} href="#root">CityMarket</a></h4>
@@ -31,6 +35,8 @@ class Titlebar extends Component{
 
           <div className="navbar">
             <div className="wrapper">
+            <ul>
+            <li><a onClick={()=>{this.formChange("businesses")}} href="#root">Home</a></li>
               <div className="dropdown">
                 <button className="dropbtn">Shopping
                   <i className="fa fa-caret-down"></i>
@@ -42,8 +48,6 @@ class Titlebar extends Component{
                   <a onClick={()=>{this.formChange("services")}} href="#root">Services</a>
                 </div>
               </div>
-
-              <ul>
                 <li><a onClick={()=>{this.formChange("profile")}} href="#root">Profile</a></li>
                 <li><a onClick={()=>{this.formChange("about")}} href="#root">About</a></li>
               </ul>
