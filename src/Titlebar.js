@@ -13,7 +13,7 @@ class Titlebar extends Component{
       <div>
 
         <div className="title">
-          <h4>CityMarket</h4>
+          <h4><a href="index.html">CityMarket</a></h4>
         </div>
 
         <div className="navbar">

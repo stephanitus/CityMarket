@@ -15,6 +15,11 @@
   margin: 5px;
 }
 
+.title h4 a {
+  color: white;
+  text-decoration: none;
+}
+
 .navbar ul {
   list-style-type: none;
   margin: 0;
