@@ -14,7 +14,7 @@ class Titlebar extends Component{
 
         <div className="title">
           <div className="wrapper">
-            <h4>CityMarket</h4>
+            <h4><a href="index.html">CityMarket</a></h4>
           </div>
         </div>
 
