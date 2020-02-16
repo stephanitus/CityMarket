@@ -288,7 +288,7 @@ class App extends Component {
           <div className="Login">
             <form onSubmit={this.handleSubmit}>
             <div className="TitleContainer">
-              <label id="user_para">
+              <label>
                 Login
               </label>
             </div>
