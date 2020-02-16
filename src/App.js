@@ -139,7 +139,7 @@ class App extends Component {
         <div className="App">
           <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
           <div className="Body">
-            <form onSubmit={this.handleSubmit}>
+            <form>
               <label>
                 Email:
                 <input type="text"  />
