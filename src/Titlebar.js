@@ -13,29 +13,31 @@ class Titlebar extends Component{
       <div>
 
         <div className="title">
-          <h4>CityMarket</h4>
+          <div className="wrapper">
+            <h4>CityMarket</h4>
+          </div>
         </div>
 
         <div className="navbar">
-
-          <div className="dropdown">
-            <button className="dropbtn">Shopping
-              <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="dropdown-content">
-              <a href="index.html">Food</a>
-              <a href="index.html">Clothing</a>
-              <a href="index.html">Hardware</a>
-              <a href="index.html">Services</a>
+          <div className="wrapper">
+            <div className="dropdown">
+              <button className="dropbtn">Shopping
+                <i className="fa fa-caret-down"></i>
+              </button>
+              <div className="dropdown-content">
+                <a href="index.html">Food</a>
+                <a href="index.html">Clothing</a>
+                <a href="index.html">Hardware</a>
+                <a href="index.html">Services</a>
+              </div>
             </div>
+
+            <ul>
+              <li><a href="index.html">About</a></li>
+              <li><a href="index.html">Login</a></li>
+              <li><a href="index.html">Sign Up</a></li>
+            </ul>
           </div>
-
-          <ul>
-            <li><a href="index.html">About</a></li>
-            <li><a href="index.html">Login</a></li>
-            <li><a href="index.html">Sign Up</a></li>
-          </ul>
-
         </div>
       </div>
     )
