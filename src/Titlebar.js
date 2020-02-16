@@ -21,7 +21,7 @@ class Titlebar extends Component{
   }
 
   render(){
-    if(this.state.loggedin){
+    if(this.state.loggedin == true){
       return(
         <div>
         <div className="account-container">

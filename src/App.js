@@ -127,9 +127,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-  this.authListener();
-}
 
   getDesc(){
     var desc = "";
@@ -163,7 +160,7 @@ class App extends Component {
   }
 
   handleEmptySubmit(e){
-    this.setState({form: "businesses", loggedin: true});
+    this.setState({form: "businesses", loggedin: false});
   }
 
   handleSubmit(e){
@@ -187,8 +184,12 @@ class App extends Component {
       const businesses = [...this.state.businesses, business]
       console.log(businesses);
       console.log(products);
-      this.setState({form: "businesses", loggedin: true, items: products, businesses: businesses });
+      this.setState({form: "businesses", items: products, businesses: businesses });
     }
+}
+
+componentDidMount() {
+  this.authListener();
 }
 
   login(e){
@@ -197,7 +198,6 @@ class App extends Component {
       var userPass = document.getElementById("password_field").value;
       fire.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
         var errorMessage = error.message;
         window.alert("Error : " + errorMessage);
       });
@@ -221,16 +221,15 @@ class App extends Component {
     authListener() {
       fire.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.setState({ user, loggedin: true });
+          this.setState({ loggedin: true });
           localStorage.setItem('user', user.uid);
+          window.alert(user.uid);
         } else {
-          this.setState({ user: null });
-          this.setState({ user, loggedin: false });
+          this.setState({ loggedin: false });
           localStorage.removeItem('user');
         }
       });
     }
-
 
 
   render(){
@@ -300,7 +299,7 @@ class App extends Component {
                 Password:
                 <input type="password" placeholder="Password..." id="password_field" />
               </label><br/>
-            <input type="submit" onClick={this.login} value="Submit" />
+            <button className="confirm-button" onClick={this.login}> Login </button>
             </form>
           </div>
         </div>

@@ -1,8 +1,8 @@
-import firebase from 'firebase';
-
+import firebase from 'firebase/app';
+import "firebase/auth";
 
   // Your web app's Firebase configuration
-  const firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyBYpGGKxGYECorO5MVoyuFitvUAxY2S2dE",
     authDomain: "citymarket-43a74.firebaseapp.com",
     databaseURL: "https://citymarket-43a74.firebaseio.com",
