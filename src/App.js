@@ -74,34 +74,34 @@ class App extends Component {
   render(){
     const cards = [];
     for (const business of this.state.businesses){
-      cards.push(<Business name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+      cards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
     }
 
     const foodcards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="food"){
-        foodcards.push(<Business name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        foodcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
       }
     }
 
     const clothingcards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="clothing"){
-        clothingcards.push(<Business name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        clothingcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
       }
     }
 
     const hardwarecards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="hardware"){
-        hardwarecards.push(<Business name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        hardwarecards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
       }
     }
 
     const servicescards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="services"){
-        servicescards.push(<Business name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        servicescards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
       }
     }
 
