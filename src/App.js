@@ -31,10 +31,30 @@ class App extends Component {
           photourl: "https://cdn11.bigcommerce.com/s-vmvni2zq0j/images/stencil/1280x1280/products/44568/56220/6902027__85991.1500584805.jpg?c=2&imbypass=on",
           producttype: "hardware"
         },{
-          businessname: "Papa's Hardware",
+          businessname: "Jack's Hardware",
           businessdescription: "Better than Lowe's",
           photourl: "https://images-na.ssl-images-amazon.com/images/I/71tTWyypTKL._AC_SX522_.jpg",
           producttype: "hardware"
+        },{
+          businessname: "Laury's Housekeeping",
+          businessdescription: "Get your house clean before the end of Winter!",
+          photourl: "https://images-na.ssl-images-amazon.com/images/I/81KBr70-REL._AC_SL1500_.jpg",
+          producttype: "services"
+        },{
+          businessname: "Beekeeping Professionals",
+          businessdescription: "You've never had real honey until now.",
+          photourl: "https://images.ctfassets.net/cnu0m8re1exe/6NeDywiU9G0nkD4OAMi83J/2a73d55ca6bb977f7f6e61d39513d682/Honeybee.jpg?w=650&h=433&fit=fill",
+          producttype: "services"
+        },{
+          businessname: "Minidonalds",
+          businessdescription: "Not at all related to McDonalds",
+          photourl: "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Fries-Small-Medium.jpg",
+          producttype: "food"
+        },{
+          businessname: "King's Burgers",
+          businessdescription: "Best burgers in the city",
+          photourl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/1200px-RedDot_Burger.jpg",
+          producttype: "food"
         }
       ]
     };
