@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Business.css'
 
+
 class Business extends Component{
   constructor(props){
     super(props);
