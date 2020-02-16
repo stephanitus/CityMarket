@@ -2,18 +2,40 @@ import React, { Component } from 'react';
 import './Titlebar.css';
 
 class Titlebar extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+
+    };
+  }
   render(){
     return(
       <div>
+
         <div className="title">
-          CityMarket
+          <h4>CityMarket</h4>
         </div>
+
         <div className="navbar">
+
+          <div className="dropdown">
+            <button className="dropbtn">Shopping
+              <i className="fa fa-caret-down"></i>
+            </button>
+            <div className="dropdown-content">
+              <a href="index.html">Food</a>
+              <a href="index.html">Clothing</a>
+              <a href="index.html">Hardware</a>
+              <a href="index.html">Services</a>
+            </div>
+          </div>
+
           <ul>
-            <li><a href="">Login</a></li>
-            <li><a href="">Sign Up</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="index.html">About</a></li>
+            <li><a href="index.html">Login</a></li>
+            <li><a href="index.html">Sign Up</a></li>
           </ul>
+
         </div>
       </div>
     )

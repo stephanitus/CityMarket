@@ -13,11 +13,13 @@ class Business extends Component{
 
   render(){
     return(
-      <div className="businesses">
-        <img src={this.state.picloc}/>
-        <p>{this.state.name}</p>
-        <p>{this.state.summary}</p>
-      </div>
+      <a href="index.html">
+        <div className="businesses">
+          <img src={this.state.picloc} alt={this.state.summary}/>
+          <p>{this.state.name}</p>
+          <p>{this.state.summary}</p>
+        </div>
+      </a>
     )
   }
 }
