@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Titlebar from './Titlebar';
 import Business from './Business';
+import fire from './config/fire';
 import BusinessPage from './BusinessPage';
 import CartItem from './CartItem';
 
@@ -12,8 +13,12 @@ class App extends Component {
     this.getState = this.getState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.authListener = this.authListener.bind(this);
     this.state = {
       cart: [],
+      user: null,
       form: "businesses",
       loggedin: false,
       selectedOption: "customer",
@@ -122,6 +127,10 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+  this.authListener();
+}
+
   getDesc(){
     var desc = "";
     for (const business of this.state.businesses){
@@ -158,27 +167,71 @@ class App extends Component {
   }
 
   handleSubmit(e){
-    const business = {
-      businessname: e.target[5].value,
-      businessdescription: e.target[6].value,
-      producttype: e.target[11].value,
-      photourl: e.target[10].value
-    };
+    if(this.state.selectedOption==="customer"){
+      this.handleEmptySubmit(e);
+    }else{
+      const business = {
+        businessname: e.target[5].value,
+        businessdescription: e.target[6].value,
+        producttype: e.target[11].value,
+        photourl: e.target[10].value
+      };
 
-    const product = {
-      productname: e.target[7].value,
-      productdescription: e.target[8].value,
-      productprice: e.target[9].value,
-      photourl: e.target[10].value,
-      producttype: e.target[11].value,
-      producer: e.target[5].value
-    };
-    const products = [...this.state.items, product]
-    const businesses = [...this.state.businesses, business]
-    console.log(businesses);
-    console.log(products);
-    this.setState({form: "businesses", loggedin: true, items: products, businesses: businesses });
-  }
+      const product = {
+        productname: e.target[7].value,
+        productdescription: e.target[8].value,
+        productprice: e.target[9].value,
+        producttype: e.target[11].value
+      };
+      const products = [...this.state.items, product]
+      const businesses = [...this.state.businesses, business]
+      console.log(businesses);
+      console.log(products);
+      this.setState({form: "businesses", loggedin: true, items: products, businesses: businesses });
+    }
+}
+
+  login(e){
+      this.handleSubmit(e);
+      var userEmail = document.getElementById("email_field").value;
+      var userPass = document.getElementById("password_field").value;
+      fire.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert("Error : " + errorMessage);
+      });
+    }
+
+    logout(){
+      fire.auth().signOut();
+    }
+
+    signup(e){
+      this.handleSubmit(e);
+      var signupEmail = document.getElementById("register_email").value;
+      var signupPass = document.getElementById("register_password").value;
+      fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
+      }).then((u)=>{console.log(u)})
+      .catch((error) => {
+          console.log(error);
+        })
+    }
+
+    authListener() {
+      fire.auth().onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user, loggedin: true });
+          localStorage.setItem('user', user.uid);
+        } else {
+          this.setState({ user: null });
+          this.setState({ user, loggedin: false });
+          localStorage.removeItem('user');
+        }
+      });
+    }
+
+
 
   render(){
     const cartitems = [];
@@ -222,7 +275,7 @@ class App extends Component {
     if(this.state.form==="businesses"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
             {cards}
           </div>
@@ -231,18 +284,23 @@ class App extends Component {
     }else if(this.state.form==="login"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
-          <div className="Body">
-            <form>
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
+          <div className="Login">
+            <form onSubmit={this.handleSubmit}>
+            <div className="TitleContainer">
+              <label id="user_para">
+                Login
+              </label>
+            </div>
               <label>
                 Email:
-                <input type="text"  />
+                <input type="email" placeholder="Email..." id="email_field" />
               </label><br/>
               <label>
                 Password:
-                <input type="password"  />
+                <input type="password" placeholder="Password..." id="password_field" />
               </label><br/>
-            <input type="submit" onClick={()=>{this.setState({form: "businesses", loggedin: true})}} value="Submit" />
+            <input type="submit" onClick={this.login} value="Submit" />
             </form>
           </div>
         </div>
@@ -250,7 +308,7 @@ class App extends Component {
     }else if(this.state.form==="food"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
             {foodcards}
           </div>
@@ -259,7 +317,7 @@ class App extends Component {
     }else if(this.state.form==="clothing"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
             {clothingcards}
           </div>
@@ -268,7 +326,7 @@ class App extends Component {
     }else if(this.state.form==="hardware"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
             {hardwarecards}
           </div>
@@ -277,7 +335,7 @@ class App extends Component {
     }else if(this.state.form==="services"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
             {servicescards}
           </div>
@@ -295,7 +353,7 @@ class App extends Component {
     }else if(this.state.form==="profile"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
 
           </div>
@@ -304,7 +362,7 @@ class App extends Component {
     }else if(this.state.form==="about"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
 
               <h2>Mission Statement</h2>
@@ -322,20 +380,25 @@ class App extends Component {
     }else if(this.state.form==="signup" && this.state.selectedOption==="localbusiness"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
+          <div className="TitleContainer">
+            <label>
+              Register
+            </label>
+          </div>
             <form onSubmit={this.handleSubmit}>
               <label>
                 Email:
-                <input type="text"  />
+                <input type="email" placeholder="Email..." id="register_email"  />
               </label><br/>
               <label>
                 Password:
-                <input type="password"  />
+                <input type="password" placeholder="Password" id="register_password"  />
               </label><br/>
               <label>
                 Confirm password:
-                <input type="password"  />
+                <input type="password" placeholder="Confirm Password" id="confirm_register_password"  />
               </label><br/>
 
               <div className="radio">
@@ -388,20 +451,25 @@ class App extends Component {
     }else if(this.state.form==="signup"){
       return(
         <div className="App">
-          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} logout={this.logout} />
           <div className="Body">
+          <div className="TitleContainer">
+            <label>
+              Register
+            </label>
+          </div>
             <form>
               <label>
                 Email:
-                <input type="text"  />
+                <input type="email" placeholder="Email..." id="register_email" />
               </label><br/>
               <label>
                 Password:
-                <input type="password"  />
+                <input type="password" placeholder="Password" id="register_password" />
               </label><br/>
               <label>
                 Confirm password:
-                <input type="password"  />
+                <input type="password" placeholder="Confirm Password" id="confirm_register_password"  />
               </label><br/>
               <div className="radio">
                 <label>
