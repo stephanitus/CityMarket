@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 
 class ProductComponent extends Component{
@@ -8,7 +8,7 @@ class ProductComponent extends Component{
           item: this.props.item,
         };
     }
-   
+
     render() {
         return(
             <div>
@@ -16,8 +16,8 @@ class ProductComponent extends Component{
                 {this.state.item.productdescription}<br/>
                 ${this.state.item.productprice}<br/>
                 <img src={this.state.item.photourl} style={{width:"250px", height:"250px"}}/>
-            </div> 
-        );      
+            </div>
+        );
     }
 
 
