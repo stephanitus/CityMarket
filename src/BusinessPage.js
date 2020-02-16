@@ -18,7 +18,7 @@ class BusinessPage extends Component{
     render() {
         var comps = [];
         for (let i = 0; i < this.state.items.length; i++){
-            comps.push(<ProductComponent item={this.state.items[i]} />);
+            comps.push(<ProductComponent key={i} item={this.state.items[i]} mergeState={this.props.mergeState} getState={this.props.getState}/>);
         }
 
         return (

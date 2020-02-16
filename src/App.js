@@ -3,14 +3,17 @@ import './App.css';
 import Titlebar from './Titlebar';
 import Business from './Business';
 import BusinessPage from './BusinessPage';
+import CartItem from './CartItem';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.mergeState = this.mergeState.bind(this);
+    this.getState = this.getState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
     this.state = {
+      cart: [],
       form: "businesses",
       loggedin: false,
       selectedOption: "customer",
@@ -140,6 +143,10 @@ class App extends Component {
     return items;
   }
 
+  getState(){
+    return this.state;
+  }
+
   mergeState(partialState){
     if(partialState){
       this.setState(Object.assign(this.state, partialState));
@@ -174,6 +181,11 @@ class App extends Component {
   }
 
   render(){
+    const cartitems = [];
+    for(const cartitem of this.state.cart){
+      cartitems.push(<CartItem key={cartitem.productname} item={cartitem} />)
+    }
+
     const cards = [];
     for (const business of this.state.businesses){
       cards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
@@ -271,6 +283,15 @@ class App extends Component {
           </div>
         </div>
       );
+    }else if(this.state.form==="cart"){
+      return(
+        <div className="App">
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <div className="Body">
+            {cartitems}
+          </div>
+        </div>
+      );
     }else if(this.state.form==="profile"){
       return(
         <div className="App">
@@ -291,7 +312,7 @@ class App extends Component {
 
               <h2>Who are We?</h2>
               <h3>We are three Boston University students looking to Bridge the Gap between
-                local businesses and large corporations. 
+                local businesses and large corporations.
               </h3>
 
 
@@ -402,7 +423,7 @@ class App extends Component {
         <div className="App">
           <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
           <div className="Body">
-            <BusinessPage name={this.state.form} items={this.getItems()} description={this.getDesc()} />
+            <BusinessPage name={this.state.form} items={this.getItems()} description={this.getDesc()} mergeState={this.mergeState}  getState={this.getState}/>
           </div>
         </div>
       );

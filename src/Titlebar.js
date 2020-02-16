@@ -46,6 +46,7 @@ class Titlebar extends Component{
               <ul>
                 <li><a onClick={()=>{this.formChange("profile")}} href="#root">Profile</a></li>
                 <li><a onClick={()=>{this.formChange("about")}} href="#root">About</a></li>
+                <li><a onClick={()=>{this.formChange("cart")}} href="#root">Cart</a></li>
               </ul>
             </div>
           </div>
