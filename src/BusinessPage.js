@@ -1,40 +1,41 @@
 import React, { Component } from 'react'
 import './BusinessPage.css'
+import ProductComponent from './ProductComponent';
+
 
 
 class BusinessPage extends Component{
     constructor(props){
         super(props);
         this.state = {
-          name: this.props.name
+          items: this.props.items,
+          name: this.props.name,
+          description: this.props.description
         };
       }
 
+
     render() {
+        var comps = [];
+        for (let i = 0; i < this.state.items.length; i++){
+            comps.push(<ProductComponent item={this.state.items[i]} />);
+        }
+
         return (
             <div className="wrapper">
                 <div className="business_title">
-                    {this.props.name}
+                    {this.state.name}
                 </div>
 
                 <div className="product_listing">
+                    <div className="flex-container">
+                        {comps}
+                    </div>
 
                 </div>
-
-
-
-
-
-
-
             </div>
-
-
-
         )
     }
-
-
-
-
 }
+
+export default BusinessPage;

@@ -10,6 +10,19 @@
 
 .product_listing {
     margin-top: 2rem
-    
+
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container > div {
+    background-color: #ffffff;
+    width: 300px;
+    margin: 10px;
+    text-align: center;
+
 }
   
