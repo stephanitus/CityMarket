@@ -223,7 +223,6 @@ componentDidMount() {
         if (user) {
           this.setState({ loggedin: true });
           localStorage.setItem('user', user.uid);
-          window.alert(user.uid);
         } else {
           this.setState({ loggedin: false });
           localStorage.removeItem('user');
