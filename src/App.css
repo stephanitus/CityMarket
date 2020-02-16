@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: #EEE;
+  height: 100%;
+  padding-bottom: 40rem;
 }
 
 .Body {

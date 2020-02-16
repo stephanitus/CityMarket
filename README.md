@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Put this in CMD for Windows
+### `npm install --save firebase`
+
 In the project directory, you can run:
 
 ### `npm start`

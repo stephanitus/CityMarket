@@ -286,6 +286,15 @@ class App extends Component {
           <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
           <div className="Body">
 
+              <h2>Mission Statement</h2>
+              <h3>Empower local businesses with the resources necessary to thrive</h3>
+
+              <h2>Who are We?</h2>
+              <h3>We are three Boston University students looking to Bridge the Gap between
+                local businesses and large corporations. 
+              </h3>
+
+
           </div>
         </div>
       );
