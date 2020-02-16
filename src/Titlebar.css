@@ -1,0 +1,36 @@
+.title {
+  display: block;
+  padding: 10px;
+  font-size: 4vw;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-align: left;
+  color: #FFF;
+  background: #404040;
+  user-select: none;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navbar li a:hover {
+  background-color: #111;
+}
