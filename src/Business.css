@@ -1,0 +1,11 @@
+.businesses {
+  display: inline-block;
+  padding: 50px;
+  margin: 15px;
+  border: 1px solid black;
+}
+
+.businesses img {
+  height: 250px;
+  width: 250px;
+}
