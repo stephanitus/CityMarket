@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import './BusinessPage.css'
+
 
 class BusinessPage extends Component{
     constructor(props){
@@ -15,7 +17,7 @@ class BusinessPage extends Component{
                     {this.props.name}
                 </div>
 
-                <div>
+                <div className="product_listing">
 
                 </div>
 
