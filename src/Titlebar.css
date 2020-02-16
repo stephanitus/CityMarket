@@ -1,13 +1,24 @@
+@font-face {
+  font-family: dovetail;
+  src: url(static/fonts/Dovetail.ttf);
+}
+
+
+.wrapper {
+  margin: 0 4rem;
+}
+
 .title {
   display: block;
   padding: 10px;
-  font-size: 4vw;
+  font-size: 1.5vw;
   font-weight: bold;
   letter-spacing: 3px;
   text-align: left;
   color: #FFF;
-  background: #404040;
+  background: #75b114;
   user-select: none;
+  font-family: 'dovetail', "Trebuchet MS", Helvetica, sans-serif;
 }
 
 .title h4 {
@@ -20,12 +31,16 @@
   text-decoration: none;
 }
 
+.navbar {
+  background-color: rgb(71, 71, 71);
+
+}
+
 .navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
 }
 
 .navbar li {
@@ -56,7 +71,7 @@
   outline: none;
   color: white;
   padding: 14px 16px;
-  background-color: #333;
+  background-color: rgb(71, 71, 71);
   font-family: inherit;
   margin: 0;
 }
