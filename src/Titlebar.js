@@ -5,13 +5,13 @@ class Titlebar extends Component{
   constructor(props){
     super(props);
     this.state = {
-
+      loggedin: false
     };
   }
+
   render(){
     return(
       <div>
-
         <div className="title">
           <div className="wrapper">
             <h4><a href="index.html">CityMarket</a></h4>
