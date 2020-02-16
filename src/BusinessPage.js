@@ -6,7 +6,9 @@ class BusinessPage extends Component{
     constructor(props){
         super(props);
         this.state = {
-          name: this.props.name
+          items: this.props.items,
+          name: this.props.name,
+          description: this.props.description
         };
       }
 
@@ -14,27 +16,15 @@ class BusinessPage extends Component{
         return (
             <div className="wrapper">
                 <div className="business_title">
-                    {this.props.name}
+                    {this.state.name}
                 </div>
 
                 <div className="product_listing">
 
                 </div>
-
-
-
-
-
-
-
             </div>
-
-
-
         )
     }
-
-
-
-
 }
+
+export default BusinessPage;

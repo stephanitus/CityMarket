@@ -4,6 +4,7 @@ import './Business.css'
 class Business extends Component{
   constructor(props){
     super(props);
+    this.updateForm = this.updateForm.bind(this);
     this.state = {
       name: this.props.name,
       summary: this.props.summary,
@@ -15,9 +16,13 @@ class Business extends Component{
      this.setState({ name: nextProps.name, summary: nextProps.summary, picloc: nextProps.picloc });
    }
 
+   updateForm(e){
+     this.props.mergeState({form: this.state.name});
+   }
+
   render(){
     return(
-      <a href="index.html">
+      <a href="#root" onClick={this.updateForm}>
         <div className="businesses">
           <img src={this.state.picloc} alt={this.state.summary}/>
           <p>{this.state.name}</p>

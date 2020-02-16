@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Titlebar from './Titlebar';
 import Business from './Business';
+import BusinessPage from './BusinessPage';
 
 class App extends Component {
   constructor(props){
@@ -13,7 +14,65 @@ class App extends Component {
       form: "businesses",
       loggedin: false,
       selectedOption: "customer",
-      items: [],
+      items: [
+        {
+          productname: "Chicken Drumsticks",
+          productdescription: "4 raw chicken drumsticks",
+          productprice: "4.99",
+          photourl: "https://previews.123rf.com/images/valery121283/valery1212831907/valery121283190700777/127749137-raw-chicken-legs-isolated-on-white-background.jpg",
+          producttype: "food",
+          producer: "Schmidt's Poultry"
+        },{
+          productname: "Designer Hoodie",
+          productdescription: "Comfy and stylish hoodie!",
+          productprice: "49.99",
+          photourl: "https://chilledworld.com/image/cache/hoodies/designer%20Hoodie%20b-600x600.jpg",
+          producttype: "clothing",
+          producer: "Kenny's Clothing"
+        },{
+          productname: "Propane Tank",
+          productdescription: "Fuel for your grill.",
+          productprice: "39.99",
+          photourl: "https://cdn11.bigcommerce.com/s-vmvni2zq0j/images/stencil/1280x1280/products/44568/56220/6902027__85991.1500584805.jpg?c=2&imbypass=on",
+          producttype: "hardware",
+          producer: "Penny's Propane"
+        },{
+          productname: "Hammer",
+          productdescription: "A sturdy tool for anyone.",
+          productprice: "6.99",
+          photourl: "https://images-na.ssl-images-amazon.com/images/I/71tTWyypTKL._AC_SX522_.jpg",
+          producttype: "hardware",
+          producer: "Jack's Hardware"
+        },{
+          productname: "House Cleaning Service",
+          productdescription: "Indepth house cleaning.",
+          productprice: "99.99",
+          photourl: "https://images-na.ssl-images-amazon.com/images/I/81KBr70-REL._AC_SL1500_.jpg",
+          producttype: "services",
+          producer: "Laury's Housekeeping"
+        },{
+          productname: "Beehive Tending",
+          productdescription: "Have us tend to beehives for you and collect honey!",
+          productprice: "49.99",
+          photourl: "https://images.ctfassets.net/cnu0m8re1exe/6NeDywiU9G0nkD4OAMi83J/2a73d55ca6bb977f7f6e61d39513d682/Honeybee.jpg?w=650&h=433&fit=fill",
+          producttype: "services",
+          producer: "Beekeeping Professionals"
+        },{
+          productname: "Small Fries",
+          productdescription: "Small order. Big taste.",
+          productprice: "2.99",
+          photourl: "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/hero/desktop/t-mcdonalds-Fries-Small-Medium.jpg",
+          producttype: "food",
+          producer: "Minidonalds"
+        },{
+          productname: "Mega Burger",
+          productdescription: "Massive whopping cheeseburger!",
+          productprice: "8.99",
+          photourl: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/1200px-RedDot_Burger.jpg",
+          producttype: "food",
+          producer: "King's Burgers"
+        }
+      ],
       businesses: [
         {
           businessname: "Schmidt's Poultry",
@@ -60,6 +119,27 @@ class App extends Component {
     };
   }
 
+  getDesc(){
+    var desc = "";
+    for (const business of this.state.businesses){
+      if(this.state.form===business.businessname){
+        desc = business.businessdescription;
+        break;
+      }
+    }
+    return desc;
+  }
+
+  getItems(){
+    const items = [];
+    for (const item of this.state.items){
+      if(item.producer===this.state.form){
+        items.push(item);
+      }
+    }
+    return items;
+  }
+
   mergeState(partialState){
     if(partialState){
       this.setState(Object.assign(this.state, partialState));
@@ -82,7 +162,9 @@ class App extends Component {
       productname: e.target[7].value,
       productdescription: e.target[8].value,
       productprice: e.target[9].value,
-      producttype: e.target[11].value
+      photourl: e.target[10].value,
+      producttype: e.target[11].value,
+      producer: e.target[5].value
     };
     const products = [...this.state.items, product]
     const businesses = [...this.state.businesses, business]
@@ -94,34 +176,34 @@ class App extends Component {
   render(){
     const cards = [];
     for (const business of this.state.businesses){
-      cards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+      cards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
     }
 
     const foodcards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="food"){
-        foodcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        foodcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
       }
     }
 
     const clothingcards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="clothing"){
-        clothingcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        clothingcards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
       }
     }
 
     const hardwarecards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="hardware"){
-        hardwarecards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        hardwarecards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
       }
     }
 
     const servicescards = [];
     for (const business of this.state.businesses){
       if(business.producttype==="services"){
-        servicescards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl}/>);
+        servicescards.push(<Business key={business.businessname} name={business.businessname} summary={business.businessdescription} picloc={business.photourl} mergeState={this.mergeState}/>);
       }
     }
 
@@ -307,7 +389,14 @@ class App extends Component {
         </div>
       );
     }else{
-      console.log("state.form error");
+      return(
+        <div className="App">
+          <Titlebar loggedin={this.state.loggedin} mergeState={this.mergeState} />
+          <div className="Body">
+            <BusinessPage name={this.state.form} items={this.getItems()} description={this.getDesc()} />
+          </div>
+        </div>
+      );
     }
   }
 }
