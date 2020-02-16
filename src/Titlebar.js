@@ -54,6 +54,10 @@ class Titlebar extends Component{
     }else{
       return(
         <div>
+          <div className="account-container">
+            <button className="account-button" onClick={()=>{this.formChange("login")}} href="#root"><a>Login</a></button>
+            <button className="account-button" onClick={()=>{this.formChange("signup")}} href="#root"><a>Sign Up</a></button>
+          </div>
           <div className="title">
             <div className="wrapper">
               <h4><a onClick={()=>{this.formChange("businesses")}} href="#root">CityMarket</a></h4>
@@ -62,6 +66,8 @@ class Titlebar extends Component{
 
           <div className="navbar">
             <div className="wrapper">
+            <ul>
+            <li><a onClick={()=>{this.formChange("businesses")}} href="#root">Home</a></li>
               <div className="dropdown">
                 <button className="dropbtn">Shopping
                   <i className="fa fa-caret-down"></i>
@@ -74,11 +80,8 @@ class Titlebar extends Component{
                 </div>
               </div>
 
-              <ul>
-                <li><a onClick={()=>{this.formChange("about")}} href="#root">About</a></li>
-                <li><a onClick={()=>{this.formChange("login")}} href="#root" style={{align: "right"}}>Login</a></li>
-                <li><a onClick={()=>{this.formChange("signup")}} href="#root" style={{align: "right"}}>Sign Up</a></li>
-              </ul>
+              <li><a onClick={()=>{this.formChange("about")}} href="#root">About</a></li>
+            </ul>
             </div>
           </div>
         </div>
