@@ -6,10 +6,13 @@ class BusinessPage extends Component{
     constructor(props){
         super(props);
         this.state = {
-          name: this.props.name
+          items: this.props.item,
+          name: this.props.name,
+          description: this.props/description
         };
       }
 
+      
     render() {
         return (
             <div className="wrapper">
@@ -18,6 +21,14 @@ class BusinessPage extends Component{
                 </div>
 
                 <div className="product_listing">
+                    <div className="flex-container">
+                        <div>
+                            Test
+                        </div>
+                        <div>
+                            Test
+                        </div>
+                    </div>
 
                 </div>
 
