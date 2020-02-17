@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Titlebar.css';
-import fire from './config/fire';
 
 class Titlebar extends Component{
   constructor(props){
@@ -21,11 +20,11 @@ class Titlebar extends Component{
   }
 
   render(){
-    if(this.state.loggedin == true){
+    if(this.state.loggedin === true){
       return(
         <div>
         <div className="account-container">
-          <button className="account-button" style={{margin: "0px 2px 20px 93px"}} onClick={this.props.logout} href="#root"><a>Sign Out</a></button>
+          <button className="account-button" style={{margin: "0px 2px 20px 93px"}} onClick={this.props.logout} href="#root"><a href="#root">Sign Out</a></button>
         </div>
           <div className="title">
             <div className="wrapper">
@@ -60,8 +59,8 @@ class Titlebar extends Component{
       return(
         <div>
           <div className="account-container">
-            <button className="account-button" onClick={()=>{this.formChange("login")}} href="#root"><a>Login</a></button>
-            <button className="account-button" onClick={()=>{this.formChange("signup")}} href="#root"><a>Sign Up</a></button>
+            <button className="account-button" onClick={()=>{this.formChange("login")}} href="#root"><a href="#root">Login</a></button>
+            <button className="account-button" onClick={()=>{this.formChange("signup")}} href="#root"><a href="#root">Sign Up</a></button>
           </div>
           <div className="title">
             <div className="wrapper">

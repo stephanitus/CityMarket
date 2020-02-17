@@ -23,7 +23,7 @@ class ProductComponent extends Component{
                 {this.state.item.productname}<br/>
                 {this.state.item.productdescription}<br/>
                 ${this.state.item.productprice}<br/>
-                <img src={this.state.item.photourl} style={{width:"250px", height:"250px"}}/>
+              <img src={this.state.item.photourl} alt={this.state.item.productname} style={{width:"250px", height:"250px"}}/>
                 <button type="button" onClick={this.addToCart} style={{margin:"10px"}}>Add To Cart!</button>
             </div>
         );
